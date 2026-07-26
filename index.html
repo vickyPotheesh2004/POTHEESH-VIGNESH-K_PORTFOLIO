@@ -4,7 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Potheesh Vignesh K — Generative AI Engineer</title>
+    <title>Potheesh Vignesh K | Aspiring AI/ML Engineer & Solo AI Researcher</title>
+    <meta name="description"
+        content="Portfolio of Potheesh Vignesh K — Aspiring AI/ML Engineer, 2026 grad and solo AI researcher building Fin-bench (20-agent financial analysis system scoring 32.47% on FinanceBench).">
+    <meta name="keywords" content="Potheesh Vignesh K, AI ML Engineer, Fin-bench, Generative AI, LangGraph, RAG, IEEE Researcher, Portfolio">
+    <meta name="author" content="Potheesh Vignesh K">
+
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="VbKXDt01-txKNIAV-Gi3NO3M-6jhAPoqX1-m1prnR-8" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://potheesh-vignesh-portfolio.vercel.app/">
+    <meta property="og:title" content="Potheesh Vignesh K | Aspiring AI/ML Engineer & Solo AI Researcher">
+    <meta property="og:description"
+        content="Aspiring AI/ML Engineer building Fin-bench (20-agent financial analysis system scoring 32.47% on FinanceBench beating GPT-4o). TCS & Infosys AI Intern.">
+    <meta property="og:image" content="https://potheesh-vignesh-portfolio.vercel.app/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://potheesh-vignesh-portfolio.vercel.app/">
+    <meta property="twitter:title" content="Potheesh Vignesh K | Aspiring AI/ML Engineer & Solo AI Researcher">
+    <meta property="twitter:description"
+        content="Aspiring AI/ML Engineer building Fin-bench (20-agent financial analysis system scoring 32.47% on FinanceBench beating GPT-4o). TCS & Infosys AI Intern.">
+    <meta property="twitter:image" content="https://potheesh-vignesh-portfolio.vercel.app/og-image.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Instrument+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap"
@@ -1921,20 +1944,192 @@
             color: rgba(255, 255, 255, .3)
         }
 
-        /* RESPONSIVE */
-        @media(max-width:1024px) {
+        /* MOBILE NAVIGATION TOGGLE & BACKDROP */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 510;
+            padding: 0
+        }
+
+        .nav-toggle span {
+            width: 100%;
+            height: 2px;
+            background: var(--ink);
+            border-radius: 2px;
+            transition: all .3s ease-in-out
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: var(--gold)
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: var(--gold)
+        }
+
+        .nav-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(26, 21, 16, 0.45);
+            backdrop-filter: blur(5px);
+            z-index: 490;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .35s ease
+        }
+
+        .nav-backdrop.active {
+            opacity: 1;
+            pointer-events: auto
+        }
+
+        /* MOBILE HERO PILLS */
+        .hero-mobile-pills {
+            display: none;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 24px
+        }
+
+        .hero-mobile-pill {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow)
+        }
+
+        .hero-mobile-pill strong {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 14px
+        }
+
+        /* MOBILE TOUCH CURSOR HIDE */
+        @media (hover: none) and (pointer: coarse) {
+            #cur, #cur2 {
+                display: none !important
+            }
+            body {
+                cursor: auto !important
+            }
+            .btn-ink, .btn-outline {
+                cursor: pointer !important
+            }
+        }
+
+        /* ACHIEVEMENTS GRID STYLES */
+        .achieve-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px
+        }
+
+        .achieve-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 32px 28px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transition: all .35s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between
+        }
+
+        .achieve-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold)
+        }
+
+        .achieve-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: .15em;
+            color: var(--gold);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .achieve-badge::before {
+            content: '◈';
+            color: var(--rose)
+        }
+
+        .achieve-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 10px
+        }
+
+        .achieve-desc {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.6
+        }
+
+        /* FLAGSHIP CARD DESKTOP SPAN */
+        @media(min-width: 1025px) {
+            .pc-flagship {
+                grid-column: span 2;
+            }
+        }
+
+        /* RESPONSIVE BREAKPOINTS */
+        @media(max-width: 1200px) {
+            nav {
+                padding: 18px 48px
+            }
+            .sec {
+                padding: 100px 48px
+            }
+            #hero {
+                padding: 0 48px;
+                gap: 40px
+            }
+        }
+
+        @media(max-width: 1024px) {
             #hero {
                 grid-template-columns: 1fr;
-                padding: 80px 40px;
-                padding-top: 120px
+                padding: 110px 36px 60px;
+                min-height: auto
             }
 
             .hero-right {
                 display: none
             }
 
+            .hero-mobile-pills {
+                display: flex
+            }
+
             .sec {
-                padding: 80px 40px
+                padding: 80px 36px
             }
 
             .skills-layout {
@@ -1953,21 +2148,41 @@
                 grid-template-columns: 1fr
             }
 
+            .achieve-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
             .edu-layout {
-                grid-template-columns: 1fr
+                grid-template-columns: 1fr;
+                gap: 40px
             }
 
             .contact-layout {
-                grid-template-columns: 1fr
+                grid-template-columns: 1fr;
+                gap: 40px
             }
 
             nav {
-                padding: 16px 40px
+                padding: 16px 36px
             }
 
             .stats-band {
                 grid-template-columns: repeat(3, 1fr);
-                padding: 40px
+                padding: 36px 24px;
+                gap: 1px
+            }
+
+            .stat-block::after {
+                display: none
+            }
+
+            .stat-block {
+                border-bottom: 1px solid rgba(255, 255, 255, .06);
+                border-right: 1px solid rgba(255, 255, 255, .06)
+            }
+
+            .stat-block:nth-child(3n) {
+                border-right: none
             }
 
             footer {
@@ -1978,13 +2193,204 @@
             }
         }
 
-        @media(max-width:640px) {
+        @media(max-width: 768px) {
+            .nav-toggle {
+                display: flex
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 82vw;
+                max-width: 320px;
+                background: rgba(250, 247, 242, .98);
+                backdrop-filter: blur(25px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 24px;
+                transform: translateX(100%);
+                transition: transform .4s cubic-bezier(.16, 1, .3, 1);
+                box-shadow: -10px 0 40px rgba(26, 21, 16, .15);
+                padding: 40px 24px;
+                z-index: 500
+            }
+
+            .nav-links.active {
+                transform: translateX(0)
+            }
+
+            .nav-links a {
+                font-size: 14px;
+                letter-spacing: .15em
+            }
+
+            .sec {
+                padding: 60px 20px
+            }
+
+            .sh {
+                margin-bottom: 40px
+            }
+
+            .sh-title {
+                font-size: clamp(28px, 7vw, 42px)
+            }
+
+            .hn1, .hn2 {
+                font-size: clamp(34px, 9vw, 56px);
+                word-break: break-word
+            }
+
+            .hn3 {
+                font-size: 11px;
+                letter-spacing: .08em;
+                word-break: break-word
+            }
+
+            .hero-tagline {
+                font-size: 14px;
+                margin: 16px 0 28px;
+                padding-left: 14px
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                width: 100%
+            }
+
+            .btn-ink, .btn-outline {
+                width: 100%;
+                justify-content: center;
+                text-align: center
+            }
+
+            .achieve-grid {
+                grid-template-columns: 1fr
+            }
+
             .pgrid {
                 grid-template-columns: 1fr
             }
 
+            .tl-wrap {
+                padding-left: 0
+            }
+
+            .tl-spine {
+                left: 12px
+            }
+
+            .tl-item {
+                padding-left: 36px;
+                margin-bottom: 36px
+            }
+
+            .tl-ring, .tl-dot {
+                left: 3px
+            }
+
+            .tl-card {
+                padding: 24px 18px
+            }
+
+            .tl-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+                margin-bottom: 12px
+            }
+
+            .tl-per {
+                font-size: 10px
+            }
+
+            .tl-role {
+                font-size: 16px;
+                margin-bottom: 12px
+            }
+
+            .tl-metric-tag {
+                font-size: 11px;
+                padding: 8px 12px
+            }
+
+            .cl-val {
+                word-break: break-all
+            }
+        }
+
+        @media(max-width: 480px) {
+            .sec {
+                padding: 48px 16px
+            }
+
             .stats-band {
-                grid-template-columns: repeat(2, 1fr)
+                grid-template-columns: repeat(2, 1fr);
+                padding: 24px 12px;
+                gap: 1px
+            }
+
+            .stat-block {
+                padding: 16px 6px;
+                border-right: 1px solid rgba(255, 255, 255, .06)
+            }
+
+            .stat-block:nth-child(2n) {
+                border-right: none
+            }
+
+            .sn {
+                font-size: 26px
+            }
+
+            .sl {
+                font-size: 8px;
+                letter-spacing: .1em
+            }
+
+            .pf-tabs {
+                justify-content: center;
+                gap: 6px
+            }
+
+            .pf-btn {
+                padding: 7px 12px;
+                font-size: 9px
+            }
+
+            .hero-status {
+                font-size: 9.5px;
+                padding: 6px 12px
+            }
+
+            .cert-sec-title {
+                font-size: 20px
+            }
+
+            .marquee-outer::before, .marquee-outer::after {
+                width: 30px
+            }
+
+            .cert-tile {
+                min-width: 220px;
+                padding: 14px 16px
+            }
+
+            .contact-statement {
+                font-size: 24px
+            }
+
+            .cl {
+                padding: 16px 14px
+            }
+
+            .cl-ico {
+                width: 36px;
+                height: 36px;
+                font-size: 16px
             }
         }
 
@@ -2015,14 +2421,21 @@
 
     <nav id="nav">
         <a href="#hero" class="nav-logo">PVK</a>
-        <ul class="nav-links">
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#skills-sec">Skills</a></li>
             <li><a href="#exp-sec">Experience</a></li>
             <li><a href="#proj-sec">Projects</a></li>
             <li><a href="#pub-sec">Research</a></li>
+            <li><a href="#achieve-sec">Achievements</a></li>
             <li><a href="#contact-sec">Contact</a></li>
         </ul>
     </nav>
+    <div class="nav-backdrop" id="nav-backdrop"></div>
 
     <main>
         <!-- ══ HERO ══ -->
@@ -2035,28 +2448,30 @@
                 <h1 class="hero-name">
                     <span class="hn1">POTHEESH</span>
                     <span class="hn2">VIGNESH K</span>
-                    <span class="hn3">GENERATIVE AI ENGINEER</span>
+                    <span class="hn3">ASPIRING AI/ML ENGINEER &amp; SOLO AI RESEARCHER</span>
                 </h1>
                 <p class="hero-tagline">
-                    Building production-grade LLM systems — from RAG pipelines to 19-node multi-agent architectures.
-                    Published IEEE researcher. TCS &amp; Infosys internship experience.
+                    Aspiring AI/ML Engineer, 2026 grad and solo AI researcher building Fin-bench — a 20-agent financial analysis system scoring 32.47% (using Llama 3.1 8b) on official FinanceBench, beating GPT-4o + Vector RAG (19%) at zero API cost via 100% local inference. Completed production internships at TCS and Infosys. IEEE published author and Google Developer Program contributor.
                 </p>
                 <div class="hero-cta">
-                    <a href="https://github.com/vickyPotheesh2004" target="_blank" class="btn-ink"><span>⬡ GitHub
-                            Projects</span></a>
-                    <a href="https://linkedin.com/in/potheesh-vignesh-k-2017092a9" target="_blank" class="btn-outline">◈
-                        LinkedIn</a>
+                    <a href="https://github.com/potheeshvignesh" target="_blank" class="btn-ink"><span>⬡ GitHub Projects</span></a>
+                    <a href="https://linkedin.com/in/potheesh-vignesh-k" target="_blank" class="btn-outline">◈ LinkedIn Profile</a>
+                </div>
+                <div class="hero-mobile-pills">
+                    <div class="hero-mobile-pill"><strong>32.47%</strong> FinanceBench Score</div>
+                    <div class="hero-mobile-pill"><strong>20</strong> Agent Nodes</div>
+                    <div class="hero-mobile-pill"><strong>2</strong> IEEE Papers</div>
                 </div>
             </div>
             <div class="hero-right">
                 <canvas id="brain-canvas"></canvas>
                 <div class="float-pill fp1">
-                    <div class="fp-num">40%</div>
-                    <div class="fp-lbl">LLM QUALITY BOOST</div>
+                    <div class="fp-num">32.47%</div>
+                    <div class="fp-lbl">FINANCEBENCH SCORE</div>
                 </div>
                 <div class="float-pill fp2">
-                    <div class="fp-num">70%</div>
-                    <div class="fp-lbl">REVIEW TIME SAVED</div>
+                    <div class="fp-num">20</div>
+                    <div class="fp-lbl">AGENT NODES</div>
                 </div>
                 <div class="float-pill fp3">
                     <div class="fp-num">2</div>
@@ -2071,13 +2486,12 @@
 
         <!-- STATS BAND -->
         <div class="stats-band rv">
-            <div class="stat-block"><span class="sn" data-target="6">0</span><span class="sl">INTERNSHIPS</span></div>
-            <div class="stat-block"><span class="sn" data-target="10">0</span><span class="sl">AI PROJECTS</span></div>
+            <div class="stat-block"><span class="sn" data-target="32.47">0%</span><span class="sl">FINANCEBENCH SCORE</span></div>
+            <div class="stat-block"><span class="sn" data-target="20">0</span><span class="sl">AGENT NODES</span></div>
+            <div class="stat-block"><span class="sn" data-target="40">0%</span><span class="sl">COST SAVED (TCS)</span></div>
+            <div class="stat-block"><span class="sn" data-target="60">0%</span><span class="sl">REVIEW SAVED (INFOSYS)</span></div>
             <div class="stat-block"><span class="sn" data-target="2">0</span><span class="sl">IEEE PAPERS</span></div>
-            <div class="stat-block"><span class="sn" data-target="7">0</span><span class="sl">CERTIFICATIONS</span>
-            </div>
-            <div class="stat-block"><span class="sn" data-target="40">0</span><span class="sl">% LLM BOOST</span></div>
-            <div class="stat-block"><span class="sn" data-target="19">0</span><span class="sl">AGENT NODES</span></div>
+            <div class="stat-block"><span class="sn" data-target="1200">0</span><span class="sl">FINANCE FORMULAS</span></div>
         </div>
 
         <div class="sec-hr" style="margin:0 auto"></div>
@@ -2101,64 +2515,39 @@
                 </div>
                 <div class="skill-rows">
                     <div class="sk-row rv" data-d="1">
-                        <div class="sk-top"><span class="sk-name">LangChain / LangGraph / LlamaIndex</span><span
-                                class="sk-pct">95%</span></div>
+                        <div class="sk-top"><span class="sk-name">Languages</span><span class="sk-pct">98%</span></div>
+                        <div class="sk-bg sk-g">
+                            <div class="sk-fill" data-w="98"></div>
+                        </div>
+                        <div class="sk-chips"><span class="sc sc-g">Python</span></div>
+                    </div>
+                    <div class="sk-row rv" data-d="2">
+                        <div class="sk-top"><span class="sk-name">AI Frameworks</span><span class="sk-pct">95%</span></div>
                         <div class="sk-bg sk-g">
                             <div class="sk-fill" data-w="95"></div>
                         </div>
-                        <div class="sk-chips"><span class="sc sc-g">LangChain</span><span
-                                class="sc sc-g">LangGraph</span><span class="sc sc-g">LlamaIndex</span><span
-                                class="sc sc-g">OpenRouter</span></div>
-                    </div>
-                    <div class="sk-row rv" data-d="2">
-                        <div class="sk-top"><span class="sk-name">RAG Architecture &amp; Vector Databases</span><span
-                                class="sk-pct">93%</span></div>
-                        <div class="sk-bg sk-g">
-                            <div class="sk-fill" data-w="93"></div>
-                        </div>
-                        <div class="sk-chips"><span class="sc sc-g">RAG</span><span class="sc sc-g">ChromaDB</span><span
-                                class="sc sc-g">BM25</span><span class="sc sc-g">Cross-Encoder</span><span
-                                class="sc sc-g">BGE-M3</span></div>
+                        <div class="sk-chips"><span class="sc sc-g">LangChain</span><span class="sc sc-g">LangGraph</span><span class="sc sc-g">LlamaIndex</span><span class="sc sc-g">HuggingFace</span></div>
                     </div>
                     <div class="sk-row rv" data-d="3">
-                        <div class="sk-top"><span class="sk-name">NLP &amp; Semantic AI</span><span
-                                class="sk-pct">90%</span></div>
+                        <div class="sk-top"><span class="sk-name">Retrieval &amp; RAG</span><span class="sk-pct">94%</span></div>
                         <div class="sk-bg sk-t">
-                            <div class="sk-fill" data-w="90"></div>
+                            <div class="sk-fill" data-w="94"></div>
                         </div>
-                        <div class="sk-chips"><span class="sc sc-t">SBERT</span><span class="sc sc-t">Whisper
-                                ASR</span><span class="sc sc-t">TF-IDF</span><span class="sc sc-t">NER</span><span
-                                class="sc sc-t">SHAP</span></div>
+                        <div class="sk-chips"><span class="sc sc-t">BM25</span><span class="sc sc-t">BGE-M3</span><span class="sc sc-t">Chroma-db</span><span class="sc sc-t">Sniper Rag iXBRL</span><span class="sc sc-t">RRF re-ranking</span><span class="sc sc-t">Cross-Encoder</span></div>
                     </div>
                     <div class="sk-row rv" data-d="4">
-                        <div class="sk-top"><span class="sk-name">LLM APIs &amp; Open-Source Models</span><span
-                                class="sk-pct">88%</span></div>
+                        <div class="sk-top"><span class="sk-name">Agentic AI</span><span class="sk-pct">93%</span></div>
                         <div class="sk-bg sk-t">
-                            <div class="sk-fill" data-w="88"></div>
+                            <div class="sk-fill" data-w="93"></div>
                         </div>
-                        <div class="sk-chips"><span class="sc sc-t">OpenAI</span><span
-                                class="sc sc-t">Anthropic</span><span class="sc sc-t">Gemini</span><span
-                                class="sc sc-t">LLaMA</span><span class="sc sc-t">Mistral</span></div>
+                        <div class="sk-chips"><span class="sc sc-t">Multi-Agent Debate</span><span class="sc sc-t">PIV Architecture</span><span class="sc sc-t">RLEF / DPO</span><span class="sc sc-t">SHAP Explainability</span><span class="sc sc-t">CART Routing</span></div>
                     </div>
                     <div class="sk-row rv" data-d="5">
-                        <div class="sk-top"><span class="sk-name">Backend &amp; API Development</span><span
-                                class="sk-pct">85%</span></div>
+                        <div class="sk-top"><span class="sk-name">Tools &amp; Infrastructure</span><span class="sk-pct">90%</span></div>
                         <div class="sk-bg sk-r">
-                            <div class="sk-fill" data-w="85"></div>
+                            <div class="sk-fill" data-w="90"></div>
                         </div>
-                        <div class="sk-chips"><span class="sc sc-r">FastAPI</span><span
-                                class="sc sc-r">Flask</span><span class="sc sc-r">Streamlit</span><span
-                                class="sc sc-r">Firebase</span><span class="sc sc-r">n8n</span></div>
-                    </div>
-                    <div class="sk-row rv" data-d="6">
-                        <div class="sk-top"><span class="sk-name">Agentic AI &amp; Multi-Agent Systems</span><span
-                                class="sk-pct">92%</span></div>
-                        <div class="sk-bg sk-r">
-                            <div class="sk-fill" data-w="92"></div>
-                        </div>
-                        <div class="sk-chips"><span class="sc sc-r">Multi-Agent</span><span class="sc sc-r">PIV
-                                Architecture</span><span class="sc sc-r">Prompt Eng.</span><span
-                                class="sc sc-r">Autonomous Flows</span></div>
+                        <div class="sk-chips"><span class="sc sc-r">Ollama</span><span class="sc sc-r">Claude Code</span><span class="sc sc-r">Gemini CLI</span><span class="sc sc-r">Streamlit</span><span class="sc sc-r">Docker</span><span class="sc sc-r">Git</span><span class="sc sc-r">pytest</span><span class="sc sc-r">Vercel</span></div>
                     </div>
                 </div>
             </div>
@@ -2182,22 +2571,15 @@
                     <div class="tl-card tc-gold">
                         <div class="tl-top">
                             <div class="tl-co">Tata Consultancy Services (TCS)</div>
-                            <div class="tl-per">FEB 2026 — PRESENT</div>
+                            <div class="tl-per">FEB 2026 — MAY 2026</div>
                         </div>
-                        <div class="tl-role">Artificial Intelligence Intern</div>
+                        <div class="tl-role">Gen AI Intern</div>
                         <ul class="tl-bullets">
-                            <li>Architected a production-grade multi-modal document analysis system (PDF, DOCX, images,
-                                CSV, Excel) transforming unstructured files into a fully searchable NLP knowledge base
-                                across 5+ document types.</li>
-                            <li>Engineered a hybrid retrieval pipeline combining ChromaDB semantic vector search with
-                                BM25 keyword indexing, achieving significantly higher answer accuracy versus
-                                single-method retrieval.</li>
-                            <li>Designed intent classification routing across 4 workflows and deployed the pipeline as a
-                                REST API using FastAPI.</li>
-                            <li>Integrated multi-LLM orchestration via OpenRouter dynamically routing each query to the
-                                most appropriate specialised model.</li>
+                            <li>Built a multi-modal RAG pipeline processing 10+ file types with intent-aware routing into 4 analytical workflows.</li>
+                            <li>Designed a multi-LLM cost-optimisation layer via OpenRouter, dynamically routing tasks by model strength - cutting inference cost by 40%.</li>
+                            <li>Replaced fixed chunking with a semantic chunker; improved vector retrieval precision by 28% measured by an internal eval harness. Added a confidence module (retrieval similarity + log-probabilities) giving real-time citation-accuracy ratings (Green / Yellow / Red).</li>
                         </ul>
-                        <div class="tl-metric-tag">↑ 40% Response Quality Boost via Multi-LLM Orchestration</div>
+                        <div class="tl-metric-tag">↓ 40% Inference Cost Cut via OpenRouter &amp; 28% Precision Boost</div>
                     </div>
                 </div>
 
@@ -2211,15 +2593,11 @@
                         </div>
                         <div class="tl-role">AI / ML Intern</div>
                         <ul class="tl-bullets">
-                            <li>Built an end-to-end NLP pipeline converting long-form podcast audio into timestamped,
-                                topic-segmented transcripts using Whisper ASR, SBERT, and TF-IDF — processing audio in
-                                under 3× real-time.</li>
-                            <li>Designed hybrid topic segmentation producing clean topic boundaries with zero manual
-                                labelling.</li>
-                            <li>Implemented multilingual translation and Roman transliteration across 4+ languages via
-                                Flask REST API.</li>
+                            <li>Built an end-to-end podcast NLP pipeline: Whisper ASR → topic segmentation → multilingual translation, reducing manual review time by ~60%.</li>
+                            <li>Designed a topic-boundary detector using SBERT + TF-IDF — zero manual labelling, generalised to 4+ audio domains without fine-tuning.</li>
+                            <li>Deployed a Streamlit app with keyword search and auto-jump navigation; adopted as a daily tool within 1 week with zero post-launch bugs.</li>
                         </ul>
-                        <div class="tl-metric-tag">↓ 60% Manual Podcast Review Time Saved</div>
+                        <div class="tl-metric-tag">↓ ~60% Manual Review Time Saved &amp; 0 Post-Launch Bugs</div>
                     </div>
                 </div>
 
@@ -2306,19 +2684,34 @@
             </div>
             <div class="pgrid" id="pgrid">
 
+                <div class="pc pc-ai ev-ai tilt" data-cat="ai" style="border: 1.5px solid var(--gold); box-shadow: var(--shadow-gold);">
+                    <span class="ieee-tag" style="background: var(--gold); color: var(--ink); font-weight: 700;">★ FLAGSHIP SYSTEM</span>
+                    <span class="pc-eyebrow">
+                        <div class="pc-dot"></div>AGENTIC AI · KEY PROJECT 2026
+                    </span>
+                    <div class="pc-title">Fin-bench — Multi-Agent Financial Analyst AI</div>
+                    <div class="pc-desc">
+                        • Scores 32.47% on official FinanceBench (Llama 3.1 8b) (150 PDFs, unseen data) — beats GPT-4o + Vector RAG (19%) at 0 cost, 100% local inference on a 14 GB laptop.<br>
+                        • 20-node pipeline: universal document extractor → CART query classifier → retrieval cascade (SniperRAG → BM25 → BGE-M3 → RRF reranker) → 3-pod debate → SHAP explainability → RLEF grading engine.<br>
+                        • 90× latency improvement via early-exit retrieval (0.1–0.3 s typical vs 1,200 s worst-case); 128+ regression tests.<br>
+                        • Invented Banana Peel Method: query decomposition stripping away complex wrappers (e.g. '2x rate', 'excl. M&A') to expose core formula.<br>
+                        • Built fina_maths_lib: 1,200 finance formulas across 32 domains for 100% deterministic computation.
+                    </div>
+                    <div class="pc-tech"><span class="pt">LangGraph</span><span class="pt">SniperRAG</span><span class="pt">BGE-M3</span><span class="pt">BM25</span><span class="pt">SHAP</span><span class="pt">RLEF</span><span class="pt">Llama 3.1 8b</span><span class="pt">fina_maths_lib</span></div>
+                    <div class="pc-foot"><span class="pc-date">2026</span><a
+                            href="https://github.com/potheeshvignesh/finbench_agent---Multi_Agent_Business_Analyist_System."
+                            class="pc-gh" target="_blank">GitHub →</a></div>
+                </div>
+
                 <div class="pc pc-ai ev-ai tilt" data-cat="ai">
                     <span class="pc-eyebrow">
                         <div class="pc-dot"></div>GENERATIVE AI · TCS 2026
                     </span>
                     <div class="pc-title">AI ResearchHelp — Multi-Modal Research Assistant</div>
-                    <div class="pc-desc">Production-grade system ingesting 10+ file types, routing across 4 AI workflows
-                        — RAG, Insight Generation, Improvement Analysis, IEEE Paper Generation. Voice input + Mermaid
-                        diagram auto-generation.</div>
-                    <div class="pc-tech"><span class="pt">ChromaDB</span><span class="pt">BM25</span><span
-                            class="pt">LangChain</span><span class="pt">OpenRouter</span><span
-                            class="pt">FastAPI</span><span class="pt">OCR</span></div>
+                    <div class="pc-desc">Production-grade system ingesting 10+ file types, routing across 4 AI workflows — RAG, Insight Generation, Improvement Analysis, IEEE Paper Generation. Voice input + Mermaid diagram auto-generation.</div>
+                    <div class="pc-tech"><span class="pt">ChromaDB</span><span class="pt">BM25</span><span class="pt">LangChain</span><span class="pt">OpenRouter</span><span class="pt">FastAPI</span><span class="pt">OCR</span></div>
                     <div class="pc-foot"><span class="pc-date">2026</span><a
-                            href="https://github.com/vickyPotheesh2004/ResearchHelp-AI-anaylsis-system" class="pc-gh"
+                            href="https://github.com/potheeshvignesh/ResearchHelp-AI-anaylsis-system" class="pc-gh"
                             target="_blank">GitHub →</a></div>
                 </div>
 
@@ -2327,30 +2720,11 @@
                         <div class="pc-dot"></div>NLP · INFOSYS 2026
                     </span>
                     <div class="pc-title">AI Podcast — Multilingual Topic Intelligence</div>
-                    <div class="pc-desc">Converts long-form podcast audio into timestamped, topic-segmented transcripts
-                        using Whisper ASR + SBERT hybrid segmentation across English, Hindi, Tamil, Telugu. 60%
-                        reduction in manual review.</div>
-                    <div class="pc-tech"><span class="pt">Whisper ASR</span><span class="pt">SBERT</span><span
-                            class="pt">TF-IDF</span><span class="pt">Flask</span><span class="pt">Streamlit</span></div>
+                    <div class="pc-desc">Converts long-form podcast audio into timestamped, topic-segmented transcripts using Whisper ASR + SBERT hybrid segmentation across English, Hindi, Tamil, Telugu. ~60% reduction in manual review.</div>
+                    <div class="pc-tech"><span class="pt">Whisper ASR</span><span class="pt">SBERT</span><span class="pt">TF-IDF</span><span class="pt">Flask</span><span class="pt">Streamlit</span></div>
                     <div class="pc-foot"><span class="pc-date">2026</span><a
-                            href="https://github.com/vickyPotheesh2004/Project-Repo-Batch-11-" class="pc-gh"
+                            href="https://github.com/potheeshvignesh/Project-Repo-Batch-11-" class="pc-gh"
                             target="_blank">GitHub →</a></div>
-                </div>
-
-                <div class="pc pc-ai ev-ai tilt" data-cat="ai">
-                    <span class="pc-eyebrow">
-                        <div class="pc-dot"></div>AGENTIC AI · PERSONAL 2026
-                    </span>
-                    <div class="pc-title">Multi-Agent Business Analyst AI System</div>
-                    <div class="pc-desc">19-node LangGraph PIV pipeline for SEC filing analysis. Monte Carlo
-                        forecasting, SHAP explainability with causal DAG visualisation, automated analyst-ready DOCX
-                        report generation.</div>
-                    <div class="pc-tech"><span class="pt">LangGraph</span><span class="pt">BGE-M3</span><span
-                            class="pt">SHAP</span><span class="pt">Monte Carlo</span><span class="pt">FastAPI</span>
-                    </div>
-                    <div class="pc-foot"><span class="pc-date">2026</span><a
-                            href="https://github.com/vickyPotheesh2004/finbench_agent---Multi_Agent_Business_Analyist_System."
-                            class="pc-gh" target="_blank">GitHub →</a></div>
                 </div>
 
                 <div class="pc pc-ai ev-ai tilt" data-cat="ai">
@@ -2458,16 +2832,40 @@
                 <div class="pub-card">
                     <div class="pub-n">01</div>
                     <div class="pub-icon-box">📡</div>
-                    <div class="pub-venue">IEEE ICEC2NT · 2025/2026</div>
-                    <div class="pub-title">Defence System Enhancement by Portable Drones Using Artificial General
-                        Intelligence (AGI)</div>
+                    <div class="pub-venue">IEEE ICEC2NT 2026</div>
+                    <div class="pub-title">Defence System Enhancement by Portable Drones Using AGI</div>
                 </div>
                 <div class="pub-card" style="transition-delay:.15s">
                     <div class="pub-n">02</div>
                     <div class="pub-icon-box">⌚</div>
-                    <div class="pub-venue">IEEE ICCCSMD · 2025/2026</div>
-                    <div class="pub-title">AI-based Health Monitoring Wearable Device in Telemedicine using MEC and MFA
-                        Technology</div>
+                    <div class="pub-venue">IEEE ICCCSMD 2025/2026</div>
+                    <div class="pub-title">AI-based Health Monitoring Wearable Device in Telemedicine using MEC and MFA Technology</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ ACHIEVEMENTS ══ -->
+        <section class="sec" id="achieve-sec">
+            <div class="sh rv">
+                <div class="sh-eyebrow">05 / RECOGNITION</div>
+                <h2 class="sh-title">Honours &amp; <em>Achievements</em></h2>
+                <div class="sh-line"></div>
+            </div>
+            <div class="achieve-grid">
+                <div class="achieve-card rv" data-d="1">
+                    <div class="achieve-badge">HACKATHON WINNER</div>
+                    <div class="achieve-title">Raptee.EV × ZOHO</div>
+                    <div class="achieve-desc">Won <strong>Runner Up</strong> title in the national electric mobility &amp; software engineering hackathon challenge.</div>
+                </div>
+                <div class="achieve-card rv" data-d="2">
+                    <div class="achieve-badge">GOOGLE BENCHMARK</div>
+                    <div class="achieve-title">Google Prompt Wars</div>
+                    <div class="achieve-desc">Achieved an outstanding <strong>96% score</strong> across complex prompt engineering &amp; AI evaluation parameters given by Google.</div>
+                </div>
+                <div class="achieve-card rv" data-d="3">
+                    <div class="achieve-badge">RESEARCH AUTHOR</div>
+                    <div class="achieve-title">IEEE Published Author</div>
+                    <div class="achieve-desc">Published <strong>2 IEEE Research Papers</strong> as primary author focused on AGI drone defence and telemedicine AI.</div>
                 </div>
             </div>
         </section>
@@ -2582,25 +2980,21 @@
 
         <div class="sec-hr"></div>
 
-        <!-- ══ EDUCATION ══ -->
+        <!-- ══ EDUCATION & COMMUNITY ══ -->
         <section class="sec" id="edu-sec">
             <div class="sh rv">
-                <div class="sh-eyebrow">06 / EDUCATION</div>
-                <h2 class="sh-title">Academic <em>Foundation</em></h2>
+                <div class="sh-eyebrow">07 / EDUCATION &amp; COMMUNITY</div>
+                <h2 class="sh-title">Academic &amp; <em>Community</em></h2>
                 <div class="sh-line"></div>
             </div>
             <div class="edu-layout">
                 <div class="edu-main rvl">
-                    <div class="edu-tag">BACHELOR OF ENGINEERING</div>
+                    <div class="edu-tag">BACHELOR'S DEGREE</div>
                     <div class="edu-degree">Electronics &amp; Communication Engineering</div>
                     <div class="edu-school">R.M.K. Engineering College, Tamil Nadu</div>
                     <div class="edu-stats">
-                        <div class="edu-s-cell"><span class="edu-s-val">6.6</span><span class="edu-s-lbl">CGPA /
-                                10</span></div>
-                        <div class="edu-s-cell"><span class="edu-s-val">2026</span><span
-                                class="edu-s-lbl">EXPECTED</span></div>
-                        <div class="edu-s-cell"><span class="edu-s-val">4</span><span class="edu-s-lbl">LANGUAGES</span>
-                        </div>
+                        <div class="edu-s-cell"><span class="edu-s-val">2026</span><span class="edu-s-lbl">GRADUATION YEAR</span></div>
+                        <div class="edu-s-cell"><span class="edu-s-val">4</span><span class="edu-s-lbl">LANGUAGES</span></div>
                     </div>
                 </div>
                 <div class="community-stack rvr">
@@ -2629,8 +3023,7 @@
                         <div class="loc-dot"></div>
                         <div>
                             <div class="loc-ttl">AVAILABILITY &amp; LOCATION</div>
-                            <div class="loc-val">Pan India · Remote · Bengaluru · Hyderabad · Chennai · Pune · Mumbai ·
-                                Available June 2026</div>
+                            <div class="loc-val">Pan India · Remote · Bengaluru · Hyderabad · Chennai · Pune · Mumbai · Available June 2026</div>
                         </div>
                     </div>
                 </div>
@@ -2642,18 +3035,16 @@
         <!-- ══ CONTACT ══ -->
         <section class="sec" id="contact-sec">
             <div class="sh rv">
-                <div class="sh-eyebrow">07 / CONNECT</div>
+                <div class="sh-eyebrow">08 / CONNECT</div>
                 <h2 class="sh-title">Let's <em>Talk</em></h2>
                 <div class="sh-line"></div>
             </div>
             <div class="contact-layout">
                 <div class="rvl">
-                    <p class="contact-statement">Open to <em>full-time roles</em> in Generative AI</p>
-                    <p class="contact-tagline">Looking for Generative AI Engineer, NLP Engineer, LLM Application
-                        Developer, or AI Research Engineer positions across India or remote. Available from June 2026.
+                    <p class="contact-statement">Open to <em>full-time AI/ML roles</em></p>
+                    <p class="contact-tagline">Looking for AI/ML Engineer, Generative AI Engineer, NLP Engineer, LLM Application Developer, or AI Research Engineer positions across India or remote. Graduating June 2026.
                     </p>
-                    <a href="mailto:kpotheeshvignesh@gmail.com" class="btn-ink" style="display:inline-flex"><span>✉ Send
-                            a Message</span></a>
+                    <a href="mailto:kpotheeshvignesh@gmail.com" class="btn-ink" style="display:inline-flex"><span>✉ Send a Message</span></a>
                 </div>
                 <div class="contact-links-col rvr">
                     <a href="mailto:kpotheeshvignesh@gmail.com" class="cl">
@@ -2672,19 +3063,19 @@
                         </div>
                         <span class="cl-arr">→</span>
                     </a>
-                    <a href="https://linkedin.com/in/potheesh-vignesh-k-2017092a9" target="_blank" class="cl cl-teal">
+                    <a href="https://linkedin.com/in/potheesh-vignesh-k" target="_blank" class="cl cl-teal">
                         <div class="cl-ico">💼</div>
                         <div>
                             <div class="cl-lbl">LINKEDIN</div>
-                            <div class="cl-val">potheesh-vignesh-k-2017092a9</div>
+                            <div class="cl-val">potheesh-vignesh-k</div>
                         </div>
                         <span class="cl-arr">→</span>
                     </a>
-                    <a href="https://github.com/vickyPotheesh2004" target="_blank" class="cl cl-teal">
+                    <a href="https://github.com/potheeshvignesh" target="_blank" class="cl cl-teal">
                         <div class="cl-ico">⬡</div>
                         <div>
                             <div class="cl-lbl">GITHUB</div>
-                            <div class="cl-val">vickyPotheesh2004</div>
+                            <div class="cl-val">potheeshvignesh</div>
                         </div>
                         <span class="cl-arr">→</span>
                     </a>
@@ -2836,12 +3227,16 @@
                 e.target.classList.add('visible');
                 // counters
                 e.target.querySelectorAll('.sn[data-target]').forEach(el => {
-                    const target = +el.dataset.target; let cur = 0;
-                    const step = Math.max(1, target / 40);
+                    const targetStr = el.dataset.target;
+                    const target = parseFloat(targetStr);
+                    const isPct = el.nextElementSibling && el.nextElementSibling.textContent.includes('%') || targetStr.includes('.');
+                    const dec = targetStr.includes('.') ? 2 : 0;
+                    let cur = 0;
+                    const step = Math.max(0.1, target / 40);
                     const ti = setInterval(() => {
                         cur = Math.min(cur + step, target);
-                        el.textContent = Math.round(cur) + (target >= 40 ? '%' : '');
-                        if (cur >= target) { el.textContent = target + (target >= 40 ? '%' : ''); clearInterval(ti) }
+                        el.textContent = (dec > 0 ? cur.toFixed(dec) : Math.round(cur)) + (isPct ? '%' : '');
+                        if (cur >= target) { el.textContent = (dec > 0 ? target.toFixed(dec) : target) + (isPct ? '%' : ''); clearInterval(ti) }
                     }, 30);
                 });
                 // skill bars
@@ -2850,7 +3245,39 @@
                 });
             });
         }, { threshold: .1 });
-        document.querySelectorAll('.rv,.rvl,.rvr,.tl-item,.pc,.pub-card,.sh').forEach(el => obs.observe(el));
+        document.querySelectorAll('.rv,.rvl,.rvr,.tl-item,.pc,.pub-card,.achieve-card,.sh').forEach(el => obs.observe(el));
+
+        // MOBILE NAV TOGGLE & BACKDROP
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        const navBackdrop = document.getElementById('nav-backdrop');
+
+        function closeMobileNav() {
+            if (navToggle) navToggle.classList.remove('active');
+            if (navLinks) navLinks.classList.remove('active');
+            if (navBackdrop) navBackdrop.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                const isActive = navLinks.classList.contains('active');
+                if (isActive) {
+                    closeMobileNav();
+                } else {
+                    navToggle.classList.add('active');
+                    navLinks.classList.add('active');
+                    if (navBackdrop) navBackdrop.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+
+            if (navBackdrop) navBackdrop.addEventListener('click', closeMobileNav);
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMobileNav);
+            });
+        }
 
         // PROJECT FILTER
         function filterP(cat, btn) {
