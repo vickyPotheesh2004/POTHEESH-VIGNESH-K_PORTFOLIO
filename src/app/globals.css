@@ -1,0 +1,408 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   THEME WIRING
+   The theme is set on <html data-theme="dark|light"> by a tiny inline script in
+   the document head, before first paint, so there is never a flash of the wrong
+   theme. `dark:` utilities are remapped to that attribute instead of a class.
+--------------------------------------------------------------------------- */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---------------------------------------------------------------------------
+   PALETTE — "instrument grade"
+
+   Dark is the flagship: an ink-navy bench with cold cyan and a signal-amber
+   accent borrowed from lab and metrology hardware. Amber + cyan is the
+   deliberate differentiator from the default blue/violet AI-portfolio look.
+   Violet is reserved for one semantic job only (agent / graph nodes).
+
+   Light is warm technical paper rather than a washed-out inversion, so the
+   brand keeps continuity with the previously indexed warm editorial site.
+--------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  --background: #f4f1e8;
+  --background-deep: #ebe6d9;
+  --surface: #ffffff;
+  --surface-2: #faf8f2;
+  --surface-3: #f1ede1;
+
+  --border: #ded7c6;
+  --border-strong: #c3b9a3;
+  --rule: #cfc6b1;
+
+  --foreground: #12161c;
+  --foreground-soft: #2c343f;
+  --muted: #5b6472;
+  --muted-2: #7c8492;
+
+  --accent: #0a6c7d;
+  --accent-strong: #084f5c;
+  --accent-soft: #d6eaee;
+
+  --signal: #9a5606;
+  --signal-soft: #f7e8ce;
+
+  --violet: #5344c0;
+  --violet-soft: #e5e2fa;
+
+  --positive: #186c47;
+  --warning: #9a5606;
+  --danger: #a32a2a;
+
+  --grid-line: rgba(24, 38, 60, 0.055);
+  --grid-line-strong: rgba(24, 38, 60, 0.1);
+  --shadow-color: 30 40 55;
+  --grain-opacity: 0.028;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #060a12;
+  --background-deep: #04070d;
+  --surface: #0b1220;
+  --surface-2: #101a2c;
+  --surface-3: #16223a;
+
+  --border: #1c2942;
+  --border-strong: #2b3c5c;
+  --rule: #22304d;
+
+  --foreground: #e9eff9;
+  --foreground-soft: #c5d1e3;
+  --muted: #94a5c0;
+  --muted-2: #6b7d99;
+
+  --accent: #4fd1e0;
+  --accent-strong: #7ee5f0;
+  --accent-soft: #0c2a33;
+
+  --signal: #f0a93b;
+  --signal-soft: #33240c;
+
+  --violet: #9b8cf8;
+  --violet-soft: #1d1a3a;
+
+  --positive: #4ade80;
+  --warning: #f0a93b;
+  --danger: #f0796e;
+
+  --grid-line: rgba(120, 165, 220, 0.07);
+  --grid-line-strong: rgba(120, 165, 220, 0.13);
+  --shadow-color: 0 0 0;
+  --grain-opacity: 0.045;
+}
+
+/* ---------------------------------------------------------------------------
+   TOKENS
+--------------------------------------------------------------------------- */
+@theme inline {
+  --font-display: var(--font-display), "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  --color-background: var(--background);
+  --color-background-deep: var(--background-deep);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-rule: var(--rule);
+
+  --color-foreground: var(--foreground);
+  --color-foreground-soft: var(--foreground-soft);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+
+  --color-violet: var(--violet);
+  --color-violet-soft: var(--violet-soft);
+
+  --color-positive: var(--positive);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 8px;
+
+  --spacing-section: 6.5rem;
+
+  --text-display-xl: clamp(2.6rem, 1.4rem + 5.2vw, 5.4rem);
+  --text-display-lg: clamp(2.1rem, 1.3rem + 3.4vw, 3.6rem);
+  --text-display-md: clamp(1.6rem, 1.1rem + 2vw, 2.35rem);
+  --text-display-sm: clamp(1.3rem, 1.05rem + 1vw, 1.65rem);
+}
+
+/* ---------------------------------------------------------------------------
+   BASE
+--------------------------------------------------------------------------- */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Anchor targets must clear the sticky header. */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Never allow a stray wide element to create horizontal scroll. */
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--background);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Numerals line up in datasheets and metric rows. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   TEXTURES & SURFACES
+--------------------------------------------------------------------------- */
+
+/* Engineering blueprint grid. Two scales of rule, very low contrast. */
+@utility blueprint {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid-line-strong) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-strong) 1px, transparent 1px);
+  background-size:
+    24px 24px,
+    24px 24px,
+    120px 120px,
+    120px 120px;
+}
+
+/* Faint film grain keeps large flat areas from looking machine-generated. */
+@utility grain {
+  position: relative;
+}
+
+@utility grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Hairline rule used between instrument-panel rows. */
+@utility hairline {
+  border-top: 1px solid var(--rule);
+}
+
+/* Small mono label: "01 / SECTION" style captions. */
+@utility mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Card surface with a hairline border and restrained elevation. */
+@utility panel {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+@utility panel-quiet {
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+/* ---------------------------------------------------------------------------
+   SCROLL REVEAL
+   IntersectionObserver toggles data-visible. No animation library involved:
+   the whole effect is a transition, which is cheaper and cannot jank.
+--------------------------------------------------------------------------- */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 620ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-visible] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   MICRO-MOTION
+--------------------------------------------------------------------------- */
+@keyframes signal-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+
+@utility live-dot {
+  animation: signal-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes dash-travel {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@utility flow-line {
+  stroke-dasharray: 5 7;
+  animation: dash-travel 1.4s linear infinite;
+}
+
+/* Animated dashed rail used by the architecture diagrams.
+   A repeating gradient animates smoothly where a dashed border cannot. */
+@keyframes rail-travel {
+  to {
+    background-position-y: 14px;
+  }
+}
+
+@utility flow-rail {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--accent) 0 4px,
+    transparent 4px 10px
+  );
+  background-size: 1px 14px;
+  background-repeat: repeat-y;
+  animation: rail-travel 1.6s linear infinite;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Ribbon of technology names; pauses on hover and for reduced motion. */
+@utility marquee-track {
+  animation: marquee-x 46s linear infinite;
+}
+
+.marquee-viewport:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   UTILITIES
+--------------------------------------------------------------------------- */
+@utility text-balance-tight {
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+}
+
+/* Hide scrollbars on horizontal rails without disabling scrolling. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Touch devices must never depend on hover to reveal information. */
+@utility hover-lift {
+  transition:
+    transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+    box-shadow: 0 12px 32px -18px rgb(var(--shadow-color) / 0.55);
+  }
+}

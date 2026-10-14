@@ -1,0 +1,16 @@
+BASELINE COMMIT: 2114fd58f680cf9eb5caa7d8a4f27e175df92253
+CAPTURED: 2026-10-14T09:55:57.4367436+05:30
+?? "AI Document Analysis System.mp4"
+?? "AI Engineer\342\200\231s Neon Portfolio Hub.png"
+?? Arome.mp4
+?? Causa.mp4
+?? Crowd_Simulation.mp4
+?? Kitchen.mp4
+?? Lexara.mp4
+?? "RAW data to graphical.mp4"
+?? VarshaAI.mp4
+?? docs/
+?? finbench.mp4
+?? formatting.mp4
+?? "image 1.png"
+?? "image 2.png"

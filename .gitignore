@@ -1,1 +1,25 @@
+node_modules/
+.next/
+out/
+build/
+coverage/
+
+# Local env files — never commit real keys
+.env
+.env*.local
+
+# Vercel project association
 .vercel
+
+# TypeScript
+next-env.d.ts
+*.tsbuildinfo
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+Thumbs.db
+
+# Scratch
+/tasks/
